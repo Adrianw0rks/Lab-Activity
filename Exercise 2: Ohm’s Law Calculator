@@ -1,0 +1,45 @@
+def calculate_voltage(current, resistance):
+    return current * resistance
+
+def calculate_current(voltage, resistance):
+    if resistance == 0:
+        return "Error: Division by zero! Current cannot be zero!."
+    return voltage/resistance
+
+def calculate_resistance(voltage, current):
+    if current == 0:
+        return "Error: Division by zero! Resistance cannot be zero!."
+    return voltage/current
+
+# Ask the user what they want to calculate
+choice = input("Choose an option (1. Voltage, 2. Current, 3. Resistance):")
+
+# Perform the appropriate calculation based on the user's choice
+if choice == '1':
+# Calculate Voltage (V = I * R)
+    current = float(input("Enter current (I in Amperes): "))
+    resistance = float(input("Enter resistance (R in Ohms): "))
+    voltage = calculate_voltage(current, resistance)
+    print(f"Voltage (V) is {voltage:.2f} volts")
+
+elif choice == '2':
+# Calculate Current (I = V / R)
+    voltage = float(input("Enter voltage (V in volts): "))
+    resistance = float(input("Enter resistance (R in Ohms): "))
+    current = calculate_current(voltage,resistance)
+    if isinstance(current, str):
+        print(current)
+    else:
+        print(f"Current (I) is {current:.2f} Amperes")
+
+elif choice == '3':
+# Calculate Resistance (R = V / I)
+    voltage = float(input("Enter voltage(V in Volts): "))
+    current = float(input("Enter current (I in Amperes)"))
+    resistance = calculate_resistance(voltage, current)
+    if isinstance(resistance, str):
+        print(resistance)
+    else:
+        print(f"Resistance (R) is {resistance:.2f} Ohms")
+else:
+    print("Invalid choice!!, Please select between 1, 2, and 3 only!")
